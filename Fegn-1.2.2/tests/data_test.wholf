@@ -1,0 +1,29 @@
+// Veri yönetimi testleri
+
+test "Veri yönetimi testi" {
+    // Veri deposu oluşturma
+    fegn DataStore {
+        testStore: []
+    }
+    
+    // Veri ekleme testi
+    var data = {
+        id: 1,
+        value: "test"
+    }
+    DataStore.addTest(data)
+    
+    // Veri alma testi
+    var allData = DataStore.getAllTest()
+    assert allData.length == 1
+    assert allData[0].value == "test"
+    
+    // Veri silme testi
+    DataStore.removeTest(0)
+    var emptyData = DataStore.getAllTest()
+    assert emptyData.length == 0
+    
+    // Filtreleme testi
+    var filteredData = DataStore.filterTest("id", "1")
+    assert filteredData.length == 0
+}

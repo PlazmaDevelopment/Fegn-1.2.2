@@ -1,0 +1,26 @@
+// Veri yönetimi örneği
+
+// Veri deposu oluşturma
+fegn DataStore {
+    users: []
+}
+
+// Kullanıcı ekleme
+var user = {
+    id: 1,
+    name: "Ahmet",
+    email: "ahmet@example.com"
+}
+
+DataStore.addUser(user)
+
+// Tüm kullanıcıları alma
+var allUsers = DataStore.getAllUsers()
+Console.log("Tüm kullanıcılar: " + allUsers)
+
+// Kullanıcı silme
+DataStore.removeUser(0)
+
+// Filtreleme
+var filteredUsers = DataStore.filterUsers("email", "ahmet@example.com")
+Console.log("Filtrelenmiş kullanıcılar: " + filteredUsers)

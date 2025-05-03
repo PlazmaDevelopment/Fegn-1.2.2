@@ -1,0 +1,25 @@
+// Olay yönetimi testleri
+
+test "Olay yönetimi testi" {
+    // Olay yöneticisi oluşturma
+    fegn Event {
+        testEvent: (data) => {
+            assert data.value == "test"
+        }
+    }
+    
+    // Olay tetikleme testi
+    var testData = {
+        value: "test"
+    }
+    Event.trigger("testEvent", testData)
+    
+    // Olay dinleyicisi kaldırma testi
+    var callback = (data) => {
+        assert false // Bu callback çağrılmasın
+    }
+    
+    Event.on("testEvent", callback)
+    Event.off("testEvent", callback)
+    Event.trigger("testEvent", testData)
+}

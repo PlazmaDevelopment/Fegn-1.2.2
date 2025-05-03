@@ -1,0 +1,26 @@
+// Olay yönetimi örneği
+
+// Olay yöneticisi oluşturma
+fegn Event {
+    userAdded: (user) => {
+        Console.log("Yeni kullanıcı eklendi: " + user.name)
+    },
+    
+    userRemoved: (userId) => {
+        Console.log("Kullanıcı silindi: " + userId)
+    }
+}
+
+// Olay tetikleme
+var newUser = {
+    id: 1,
+    name: "Ahmet",
+    email: "ahmet@example.com"
+}
+
+Event.trigger("userAdded", newUser)
+
+// Olay dinleyicisi kaldırma
+Event.off("userAdded", (user) => {
+    Console.log("Yeni kullanıcı eklendi: " + user.name)
+})

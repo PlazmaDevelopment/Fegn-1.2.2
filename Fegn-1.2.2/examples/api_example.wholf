@@ -1,0 +1,29 @@
+// API entegrasyonu örneği
+
+// API yöneticisi oluşturma
+fegn Api {
+    baseUrl: "https://api.example.com",
+    headers: {
+        "Content-Type": "application/json"
+    }
+}
+
+// GET isteği
+var users = Api.get("/users")
+Console.log("Kullanıcılar: " + users)
+
+// POST isteği
+var newUser = {
+    name: "Ahmet",
+    email: "ahmet@example.com"
+}
+
+var response = Api.post("/users", newUser)
+Console.log("Yeni kullanıcı oluşturuldu: " + response)
+
+// Hata yönetimi
+try {
+    var invalidResponse = Api.get("/invalid")
+} catch (error) {
+    Console.log("Hata: " + error.message)
+}
